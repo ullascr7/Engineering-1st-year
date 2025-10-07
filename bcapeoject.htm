@@ -1,0 +1,478 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Library - Personalized</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #312e81, #4338ca, #0f172a);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    button {
+      margin-top: 20px;
+      background: linear-gradient(90deg, #60a5fa, #8b5cf6);
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(59,130,246,0.6);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tag.active {
+      background: #60a5fa;
+      color: white;
+      border-color: #93c5fd;
+    }
+
+    .books {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .book {
+      background: rgba(255,255,255,0.08);
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .read-btn {
+      float: right;
+      background: #4ade80;
+      border: none;
+      color: black;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .read-btn:hover {
+      background: #22c55e;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  LOGIN PAGE -->
+  <!-- <div class="container" id="loginPage">
+    <h2>🔐 Library Login</h2>
+    <p>Enter your name to continue</p>
+    <input type="text" id="username" placeholder="Enter your name">
+    <br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- INTEREST PAGE -->
+  <!-- <div class="container hidden" id="interestPage">
+    <h2 id="welcomeText">👋 Welcome!</h2>
+    <p>Select your interests:</p>
+
+    <div class="tags" id="interestTags">
+      <div class="tag" onclick="toggleTag(this, 'business')">💼 Business</div>
+      <div class="tag" onclick="toggleTag(this, 'economics')">📈 Economics</div>
+      <div class="tag" onclick="toggleTag(this, 'ai')">🤖 Artificial Intelligence</div>
+      <div class="tag" onclick="toggleTag(this, 'python')">🐍 Python</div>
+      <div class="tag" onclick="toggleTag(this, 'datascience')">📊 Data Science</div>
+      <div class="tag" onclick="toggleTag(this, 'literature')">📚 Literature</div>
+    </div>
+
+    <button onclick="showRecommendations()">Next →</button>
+  </div>
+
+  <!-- BOOK RECOMMENDATION PAGE -->
+  <!-- <div class="container hidden" id="booksPage">
+    <h2>📘 Recommended Books</h2>
+    <div class="books" id="bookList"></div>
+  </div>
+
+  <script>
+    let selectedInterests = [];
+
+    function login() {
+      const name = document.getElementById('username').value.trim();
+      if (!name) {
+        alert("Please enter your name!");
+        return;
+      }
+      document.getElementById('loginPage').classList.add('hidden');
+      document.getElementById('interestPage').classList.remove('hidden');
+      document.getElementById('welcomeText').innerText = "👋 Welcome, " + name + "!";
+    }
+
+    function toggleTag(element, interest) {
+      element.classList.toggle("active");
+      if (selectedInterests.includes(interest)) {
+        selectedInterests = selectedInterests.filter(i => i !== interest);
+      } else {
+        selectedInterests.push(interest);
+      }
+    }
+
+    const booksByInterest = {
+      business: [
+        "Rich Dad Poor Dad - Robert Kiyosaki",
+        "The Lean Startup - Eric Ries",
+        "Zero to One - Peter Thiel"
+      ],
+      economics: [
+        "The Wealth of Nations - Adam Smith",
+        "Freakonomics - Steven D. Levitt",
+        "Principles of Economics - Mankiw"
+      ],
+      ai: [
+        "Artificial Intelligence: A Modern Approach - Russell & Norvig",
+        "Deep Learning - Ian Goodfellow",
+        "AI Superpowers - Kai-Fu Lee"
+      ],
+      python: [
+        "Automate the Boring Stuff with Python - Al Sweigart",
+        "Python Crash Course - Eric Matthes",
+        "Fluent Python - Luciano Ramalho"
+      ],
+      datascience: [
+        "Hands-On Data Science - Valliappa Lakshmanan",
+        "Data Science from Scratch - Joel Grus",
+        "Storytelling with Data - Cole Nussbaumer"
+      ],
+      literature: [
+        "Pride and Prejudice - Jane Austen",
+        "To Kill a Mockingbird - Harper Lee",
+        "The Alchemist - Paulo Coelho"
+      ]
+    };
+
+    function showRecommendations() {
+      if (selectedInterests.length === 0) {
+        alert("Please select at least one interest!");
+        return;
+      }
+
+      document.getElementById('interestPage').classList.add('hidden');
+      document.getElementById('booksPage').classList.remove('hidden');
+
+      const list = document.getElementById('bookList');
+      list.innerHTML = "";
+
+      let allBooks = [];
+      selectedInterests.forEach(topic => {
+        allBooks = allBooks.concat(booksByInterest[topic]);
+      });
+
+      list.innerHTML = allBooks.map(book =>
+        `<div class="book">${book} <button class="read-btn" onclick="readBook('${book}')">Read</button></div>`
+      ).join('');
+    }
+
+    function readBook(book) {
+      alert("📖 Opening: " + book + "\n(This can later open the book's PDF or preview)");
+    }
+  </script>
+</body>
+</html> --> --> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 Smart Digital College Library</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #312e81, #4338ca, #0f172a); color: white; min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Navbar */
+    nav { width: 100%; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; padding: 15px 30px; position: fixed; top: 0; left: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    nav .logo { font-weight: 700; font-size: 22px; color: #fff; letter-spacing: 1px; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li { cursor: pointer; transition: 0.3s; }
+    nav ul li:hover { color: #60a5fa; }
+
+    .container { margin-top: 120px; background: rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 30px; width: 90%; max-width: 500px; text-align: center; box-shadow: 0 0 25px rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); margin-left:auto;margin-right:auto;}
+    h2 { margin-bottom: 10px; }
+    p { color: #ddd; }
+    input { width: 80%; padding: 10px; border: none; border-radius: 8px; margin-top: 15px; text-align: center; outline: none; }
+    button { margin-top: 20px; background: linear-gradient(90deg, #60a5fa, #8b5cf6); border: none; color: #fff; padding: 10px 25px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+    button:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(59,130,246,0.6); }
+
+    .hidden { display: none; }
+    .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+    .tag { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 20px; padding: 8px 15px; cursor: pointer; transition: all 0.3s ease; user-select: none; }
+    .tag.active { background: #60a5fa; color: white; border-color: #93c5fd; }
+    .books { margin-top: 20px; text-align: left; }
+    .book { background: rgba(255,255,255,0.08); margin: 8px 0; padding: 10px; border-radius: 8px; font-size: 15px; }
+    .read-btn { float: right; background: #4ade80; border: none; color: black; font-weight: bold; padding: 5px 10px; border-radius: 6px; cursor: pointer; transition: 0.3s; }
+    .read-btn:hover { background: #22c55e; color: white; }
+
+    footer { margin-top: auto; text-align: center; padding: 15px; font-size: 14px; color: #ccc; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+
+    /* Book Preview Modal */
+    #bookPreview { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.9); display: flex; justify-content:center; align-items:center; z-index:200; }
+    #bookPreview .modal { background: #1e1b4b; padding:20px; border-radius:12px; width:80%; max-width:700px; color:white; text-align:left; position: relative; }
+    #bookPreview .modal h3 { margin-bottom: 15px; }
+    #bookPreview .modal p { white-space: pre-line; line-height:1.5; }
+    #bookPreview .modal button.close { position:absolute; top:15px; right:15px; background:red; color:white; border:none; padding:5px 10px; border-radius:6px; cursor:pointer; }
+    #bookPreview .modal .navBtns { margin-top:15px; display:flex; justify-content:space-between; }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">📚 Smart Library</div>
+    <ul>
+      <li onclick="showSection('loginPage')">Home</li>
+      <li onclick="showSection('aboutPage')">About</li>
+      <li onclick="showSection('booksPage')">Books</li>
+      <li onclick="showSection('contactPage')">Contact</li>
+      <li onclick="showSection('profilePage')">Account</li>
+    </ul>
+  </nav>
+
+  <!-- LOGIN PAGE -->
+  <div class="container" id="loginPage">
+    <h2>🔐 Library Login</h2>
+    <p>Enter your name to continue</p>
+    <input type="text" id="username" placeholder="Enter your name">
+    <br>
+    <button onclick="login()">Login</button>
+  </div>
+
+  <!-- ABOUT PAGE -->
+  <div class="container hidden" id="aboutPage">
+    <h2>ℹ️ About</h2>
+    <p>Welcome to <strong>Smart Digital College Library</strong>!  
+       This platform lets students read and explore books online based on their interests.  
+       Enjoy learning smarter and faster. 📖</p>
+  </div>
+
+  <!-- INTEREST PAGE -->
+  <div class="container hidden" id="interestPage">
+    <h2 id="welcomeText">👋 Welcome!</h2>
+    <p>Select your interests:</p>
+    <div class="tags" id="interestTags">
+      <div class="tag" onclick="toggleTag(this, 'business')">💼 Business</div>
+      <div class="tag" onclick="toggleTag(this, 'economics')">📈 Economics</div>
+      <div class="tag" onclick="toggleTag(this, 'ai')">🤖 Artificial Intelligence</div>
+      <div class="tag" onclick="toggleTag(this, 'python')">🐍 Python</div>
+      <div class="tag" onclick="toggleTag(this, 'datascience')">📊 Data Science</div>
+      <div class="tag" onclick="toggleTag(this, 'literature')">📚 Literature</div>
+    </div>
+    <button onclick="showRecommendations()">Next →</button>
+  </div>
+
+  <!-- BOOK RECOMMENDATION PAGE -->
+  <div class="container hidden" id="booksPage">
+    <h2>📘 Recommended Books</h2>
+    <div class="books" id="bookList"></div>
+  </div>
+
+  <!-- CONTACT PAGE -->
+  <div class="container hidden" id="contactPage">
+    <h2>📩 Contact Us</h2>
+    <p>Have questions or suggestions? Reach us at:</p>
+    <p><strong>Email:</strong> support@smartlibrary.com</p>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+  </div>
+
+  <!-- PROFILE PAGE -->
+  <div class="container hidden" id="profilePage">
+    <h2>👤 My Account</h2>
+    <p id="userDisplay">You are not logged in yet.</p>
+  </div>
+
+  <!-- BOOK PREVIEW MODAL -->
+  <div id="bookPreview">
+    <div class="modal">
+      <button class="close" onclick="closePreview()">X</button>
+      <h3 id="previewTitle">Book Title</h3>
+      <p id="previewContent"></p>
+      <div class="navBtns">
+        <button onclick="prevPage()">⬅ Previous</button>
+        <span id="pageNumber">Page 1/10</span>
+        <button onclick="nextPage()">Next ➡</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 Smart Digital College Library | Designed by Ullas
+  </footer>
+
+<script>
+  let selectedInterests = [];
+  let currentUser = "";
+  let currentPages = [];
+  let currentPage = 0;
+
+  const booksByInterest = {
+    business: ["Rich Dad Poor Dad - Robert Kiyosaki","The Lean Startup - Eric Ries","Zero to One - Peter Thiel"],
+    economics: ["The Wealth of Nations - Adam Smith","Freakonomics - Steven D. Levitt","Principles of Economics - Mankiw"],
+    ai: ["Artificial Intelligence: A Modern Approach - Russell & Norvig","Deep Learning - Ian Goodfellow","AI Superpowers - Kai-Fu Lee"],
+    python: ["Automate the Boring Stuff with Python - Al Sweigart","Python Crash Course - Eric Matthes","Fluent Python - Luciano Ramalho"],
+    datascience: ["Hands-On Data Science - Valliappa Lakshmanan","Data Science from Scratch - Joel Grus","Storytelling with Data - Cole Nussbaumer"],
+    literature: ["Pride and Prejudice - Jane Austen","To Kill a Mockingbird - Harper Lee","The Alchemist - Paulo Coelho"]
+  };
+
+  // Wikipedia links for books
+  const wikiLinks = {
+    "Rich Dad Poor Dad - Robert Kiyosaki": "https://en.wikipedia.org/wiki/Rich_Dad_Poor_Dad",
+    "The Lean Startup - Eric Ries": "https://en.wikipedia.org/wiki/The_Lean_Startup",
+    "Zero to One - Peter Thiel": "https://en.wikipedia.org/wiki/Zero_to_One_(book)",
+    "The Wealth of Nations - Adam Smith": "https://en.wikipedia.org/wiki/An_Inquiry_into_the_Nature_and_Causes_of_the_Wealth_of_Nations",
+    "Freakonomics - Steven D. Levitt": "https://en.wikipedia.org/wiki/Freakonomics",
+    "Principles of Economics - Mankiw": "https://en.wikipedia.org/wiki/Principles_of_Economics_(Mankiw_book)",
+    "Artificial Intelligence: A Modern Approach - Russell & Norvig": "https://en.wikipedia.org/wiki/Artificial_Intelligence:_A_Modern_Approach",
+    "Deep Learning - Ian Goodfellow": "https://en.wikipedia.org/wiki/Deep_Learning_(Goodfellow_book)",
+    "AI Superpowers - Kai-Fu Lee": "https://en.wikipedia.org/wiki/AI_Superpowers",
+    "Automate the Boring Stuff with Python - Al Sweigart": "https://en.wikipedia.org/wiki/Automate_the_Boring_Stuff_with_Python",
+    "Python Crash Course - Eric Matthes": "https://en.wikipedia.org/wiki/Python_Crash_Course",
+    "Fluent Python - Luciano Ramalho": "https://en.wikipedia.org/wiki/Fluent_Python",
+    "Hands-On Data Science - Valliappa Lakshmanan": "#",
+    "Data Science from Scratch - Joel Grus": "https://en.wikipedia.org/wiki/Data_Science_from_Scratch",
+    "Storytelling with Data - Cole Nussbaumer": "https://en.wikipedia.org/wiki/Storytelling_with_Data",
+    "Pride and Prejudice - Jane Austen": "https://en.wikipedia.org/wiki/Pride_and_Prejudice",
+    "To Kill a Mockingbird - Harper Lee": "https://en.wikipedia.org/wiki/To_Kill_a_Mockingbird",
+    "The Alchemist - Paulo Coelho": "https://en.wikipedia.org/wiki/The_Alchemist_(novel)"
+  };
+
+  function showSection(sectionId) {
+    document.querySelectorAll(".container").forEach(c => c.classList.add("hidden"));
+    document.getElementById(sectionId).classList.remove("hidden");
+  }
+
+  function login() {
+    const name = document.getElementById('username').value.trim();
+    if (!name) { alert("Please enter your name!"); return; }
+    currentUser = name;
+    document.getElementById('welcomeText').innerText = "👋 Welcome, " + name + "!";
+    document.getElementById('userDisplay').innerText = "Logged in as: " + name;
+    showSection('interestPage');
+  }
+
+  function toggleTag(element, interest) {
+    element.classList.toggle("active");
+    if (selectedInterests.includes(interest)) selectedInterests = selectedInterests.filter(i => i!==interest);
+    else selectedInterests.push(interest);
+  }
+
+  // Show books with Wikipedia link
+  function showRecommendations() {
+    if (selectedInterests.length === 0) { 
+      alert("Select at least one interest!"); 
+      return; 
+    }
+    showSection('booksPage');
+    const list = document.getElementById('bookList');
+    list.innerHTML = "";
+    let allBooks = [];
+    selectedInterests.forEach(topic => allBooks = allBooks.concat(booksByInterest[topic]));
+
+    list.innerHTML = allBooks.map(book => 
+      `<div class="book">
+        <a href="${wikiLinks[book] || '#'}" target="_blank" style="color:white;text-decoration:none;">
+          ${book}
+        </a>
+      </div>`
+    ).join('');
+  }
+
+  // Optional: Book preview inside your site
+  function readBook(book) {
+    // Example: 5-page preview
+    currentPages = [
+      `Preview Page 1 of ${book}`,
+      `Preview Page 2 of ${book}`,
+      `Preview Page 3 of ${book}`,
+      `Preview Page 4 of ${book}`,
+      `Preview Page 5 of ${book}`
+    ];
+    currentPage = 0;
+    document.getElementById('previewTitle').innerText = book;
+    document.getElementById('previewContent').innerText = currentPages[currentPage];
+    document.getElementById('pageNumber').innerText = `Page ${currentPage+1}/${currentPages.length}`;
+    document.getElementById('bookPreview').style.display = 'flex';
+  }
+
+  function nextPage() { if(currentPage < currentPages.length-1) { currentPage++; updatePreview(); } }
+  function prevPage() { if(currentPage > 0) { currentPage--; updatePreview(); } }
+  function updatePreview() { 
+    document.getElementById('previewContent').innerText = currentPages[currentPage]; 
+    document.getElementById('pageNumber').innerText = `Page ${currentPage+1}/${currentPages.length}`;
+  }
+  function closePreview() { document.getElementById('bookPreview').style.display='none'; }
+</script>
+
+
+</body>
+</html>
